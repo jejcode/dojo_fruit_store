@@ -8,8 +8,10 @@ def index():
 @app.route('/checkout', methods=['POST'])         
 def checkout():
     print(request.form)
+    # calculate item count before sending it to the page
     total_items = int(request.form['strawberry']) + int(request.form['raspberry']) + int(request.form['apple'])
-    print(f"Charing {request.form['first_name']} for {total_items} fruit.")
+    print(f"Charging {request.form['first_name']} for {total_items} fruit.")
+    # sends form data to the web page. Probably not a good idea, but it works for the assignment
     return render_template("checkout.html", data = request.form, total_items = total_items)
 
 @app.route('/fruits')         
